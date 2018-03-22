@@ -1,0 +1,57 @@
+.ok {
+  position: absolute;
+  left: 0;
+  bottom: 19%;
+  width: 100%;
+  height: 6%;
+}
+
+.next {
+  position: absolute;
+  right: 30%;
+  bottom: 10%;
+  width: 40%;
+  height: 8%;
+}
+
+.man {
+  position: absolute;
+  right: 50%;
+  top: 31.5%;
+  width: 36.3%;
+  height: 43.3%;
+  border-top-left-radius: 22rpx;
+  border-bottom-left-radius: 22rpx;
+}
+
+.showMan {
+  position: absolute;
+  right: 50%;
+  top: 31.5%;
+  width: 36.3%;
+  height: 43.3%;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-top-left-radius: 22rpx;
+  border-bottom-left-radius: 22rpx;
+}
+
+.woman {
+  position: absolute;
+  left: 50%;
+  top: 31.5%;
+  width: 36.3%;
+  height: 43.3%;
+  border-top-right-radius: 22rpx;
+  border-bottom-right-radius: 22rpx;
+}
+
+.showWoman {
+  position: absolute;
+  left: 50%;
+  top: 31.5%;
+  width: 36.3%;
+  height: 43.3%;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-top-right-radius: 22rpx;
+  border-bottom-right-radius: 22rpx;
+}

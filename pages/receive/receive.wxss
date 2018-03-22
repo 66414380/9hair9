@@ -1,0 +1,64 @@
+.show {
+  position: absolute;
+  right: 30%;
+  bottom: 8%;
+  width: 40%;
+  height: 9%;
+}
+
+.input {
+  font-size: 24rpx;
+  position: absolute;
+  left: 13%;
+  top: 20.5%;
+  width: 77%;
+  height: 9%;
+}
+
+.placeholder {
+  font-size: 24rpx;
+  color: #999;
+  font-weight: 100;
+}
+
+.share {
+  position: absolute;
+  right: 25%;
+  bottom: 0%;
+  width: 50%;
+  height: 10%;
+}
+
+.resImg {
+  position: absolute;
+  left: 0%;
+  top: 30%;
+  width: 100%;
+  height: 49%;
+  
+}
+.share_img{
+   position: absolute;
+  left: 0%;
+  top: 17%;
+  width: 100%;
+  height: 70%;
+  /* background-color: red */
+}
+.saveImg {
+  position: absolute;
+  left: 0%;
+  bottom: 4%;
+  width: 44%;
+  height: 8%;
+}
+
+.sandButton {
+  position: absolute;
+  right: 0%;
+  bottom: 4%;
+  width: 51%;
+  height: 8%;
+  padding: 0;
+  margin: 0;
+}

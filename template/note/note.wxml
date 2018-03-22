@@ -1,0 +1,11 @@
+<template name="note">
+  <view style="display:{{display}};height: {{height}}px; width: {{width}}px;background-color: #C2C2C2;position: absolute;left: 0;top: 0;z-index: 100;background-color:rgba(0,0,0,.8)">
+    <view style="width:80%;height:80%;position:fixed;z-index:111;top: {{top}}px; left: {{left}}px;">
+      <view class='body flex'>
+        <image style="width: 100%" mode="widthFix" src="../../images/2.png"></image>
+        <view class='understand' bindtap='understandHandle'></view>
+      </view>
+
+    </view>
+  </view>
+</template>
