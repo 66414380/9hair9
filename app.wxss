@@ -26,5 +26,5 @@ page{height: 100%}
 .flex_f{display: flex;flex-direction: column}
 .flex_e{display: flex;align-items: flex-end}
 .f_f{flex-flow: wrap}
-.flex_eb{display: flex;align-items: center;justify-content: space-between;}
+.flex_sb{display: flex;align-items: center;justify-content: space-between;}
 .flex_1{flex: 1;}
