@@ -1,7 +1,9 @@
 {
   "pages":[
+    "pages/voucher/voucher",
     "pages/index/index",
     "pages/select/select",
+    
     "pages/receive/receive"
   ],
   "window":{

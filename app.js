@@ -1,8 +1,11 @@
 
 
-const baseUrl = 'https://x.kuan1.cn/wxapp/index.php';//生产环境
-// const baseUrl = 'http://test0.kuan1.cn/wxapp/index.php';//测试环境
+// const baseUrl = 'https://x.kuan1.cn/wxapp/index.php';//生产环境
+const baseUrl = 'http://test0.kuan1.cn/wxapp/index.php';//测试环境
 App({
+
+  updateUrl: 'http://test0.kuan1.cn/oss/index.php?controller=index&action=upload_img',//测试环境上传图片
+  // updateUrl: 'https://x.kuan1.cn/oss/index.php?controller=index&action=upload_img',//生产环境上传图片
   xhr: function (method, url, obj = null, token = '', cb) {
     wx.request({
       url: baseUrl + url,

@@ -77,6 +77,14 @@ Page({
       })
       return
     }
+    if (this.data.inputValue.length > 33) {
+      wx.showToast({
+        title: '文字内容大于33个字符',
+        icon: 'none',
+        duration: 2000
+      })
+      return
+    }
     // if (!this.data.inputValue.trim()) {
     //   wx.showToast({
     //     title: '文字内容不符合要求',

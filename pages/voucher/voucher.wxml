@@ -1,0 +1,183 @@
+<view class='body flex_f'>
+
+  <view wx:if='{{status === 1}}'>
+    <text class='font_24 margin_10 color_9'>请按提示填写申请</text>
+
+    <view class="flex_a input_h ">
+      <view class='flex_1'>
+        <view class='input_l flex_a'>
+          <text class='font_28 color_9'>*联系人</text>
+        </view>
+      </view>
+      <view class='flex_2'>
+        <input placeholder='请输入姓名' class='input' value='{{name}}' bindinput="nameHandle" placeholder-class='placeholder'></input>
+      </view>
+      <view class='flex_1'>
+      </view>
+    </view>
+
+    <view class="flex_a input_h margin_t_10">
+      <view class='flex_1'>
+        <view class='input_l flex_a'>
+          <text class='font_28 color_9'>*餐厅品牌</text>
+        </view>
+      </view>
+      <view class='flex_2'>
+        <input placeholder='请输入餐厅品牌' class='input' value='{{brand}}' bindinput="brandHandle" placeholder-class='placeholder'></input>
+      </view>
+      <view class='flex_1'>
+      </view>
+    </view>
+
+    <view class="flex_a input_h margin_t_10">
+      <view class='flex_1'>
+        <view class='input_l flex_a'>
+          <text class='font_28 color_9'>*联系电话</text>
+        </view>
+      </view>
+      <view class='flex_2'>
+        <input placeholder='请输入手机号码' class='input' type="number" maxlength='11' value='{{phone}}' bindinput="phoneHandle" placeholder-class='placeholder'></input>
+      </view>
+      <view class='flex_1'>
+        <view class='flex'>
+          <text class='font_28 codeColor' bindtap="validate">{{seconds}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="flex_a input_h margin_t_10">
+      <view class='flex_1'>
+        <view class='input_l margin_r_10 flex_a'>
+          <text class='font_28 color_9'>*验证码</text>
+        </view>
+      </view>
+      <view class='flex_1'>
+        <input placeholder='请输入验证码' class='input' value='{{code}}' bindinput="codeHandle" placeholder-class='placeholder'></input>
+      </view>
+      <view class='flex_1'>
+      </view>
+    </view>
+
+
+    <view class="flex_a input_h margin_t_10">
+      <view class='flex_1'>
+      </view>
+      <view class='flex_2 flex'>
+        <text data-id='1' class='placeholder' bindtap='upImage'>+提交营业执照扫描件</text>
+      </view>
+      <view class='flex_1'>
+      </view>
+    </view>
+
+    <view class='flex margin_t_10' wx:if="{{businessImage !== ''}}">
+      <image class='img' mode="aspectFit" src="{{businessImage}}"></image>
+    </view>
+
+
+    <view class="flex_a input_h margin_t_10">
+      <view class='flex_1'>
+      </view>
+      <view class='flex_2 flex'>
+        <text data-id='2' class='placeholder' bindtap='upImage'>+提交身份证扫描件</text>
+      </view>
+      <view class='flex_1'>
+      </view>
+    </view>
+
+    <view class='flex margin_t_10' wx:if="{{idImage !== ''}}">
+      <image class='img' mode="aspectFit" src="{{idImage}}"></image>
+    </view>
+
+    <view class="flex_a input_h margin_t_10">
+      <view class='flex_1'>
+      </view>
+      <view class='flex_1 flex'>
+        <text class='font_28 color' bindtap='submit'>保存并提交</text>
+      </view>
+      <view class='flex_1'>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if='{{status === 2 || status === 3}}'>
+    <text class='font_24 margin_10 color_9'>申请状态：<text class='font_24  color_6'>审核中</text></text>
+    <view class="flex_a input_h">
+      <view class='flex_1'>
+        <view class='input_l flex_a'>
+          <text class='font_28 color_9'>*餐厅品牌</text>
+        </view>
+      </view>
+      <view class='flex_2 flex'>
+        <text class='placeholder'>大城小厨</text>
+      </view>
+      <view class='flex_1'></view>
+    </view>
+
+    <view class="flex_a input_h margin_t_10">
+      <view class='flex_1'>
+        <view class='input_l flex_a'>
+          <text class='font_28 color_9'>*联系电话</text>
+        </view>
+      </view>
+      <view class='flex_2 flex'>
+        <text class='placeholder'>13888888888</text>
+      </view>
+      <view class='flex_1'></view>
+    </view>
+
+    <view class="flex_a input_h margin_t_10">
+      <view class='flex_1'>
+        <view class='input_l flex_a'>
+          <text class='font_28 color_9'>*联系人</text>
+        </view>
+      </view>
+      <view class='flex_2 flex'>
+        <text class='placeholder'>李小明</text>
+      </view>
+      <view class='flex_1'></view>
+    </view>
+
+    <view class="flex_a input_h margin_t_10" wx:if='{{status === 2}}'>
+      <view class='flex_1'>
+      </view>
+      <view class='flex_2 flex'>
+        <text data-id='1' class='placeholder' bindtap='showBusinessImage'>营业执照扫描件</text>
+      </view>
+      <view class='flex_1'>
+      </view>
+    </view>
+
+    <view class="flex_a input_h margin_t_10" wx:if='{{status === 2}}'>
+      <view class='flex_1'>
+      </view>
+      <view class='flex_2 flex'>
+        <text data-id='1' class='placeholder' bindtap='showIdImage'>营业执照扫描件</text>
+      </view>
+      <view class='flex_1'>
+      </view>
+    </view>
+
+    <view class="flex_f show_content margin_t_10" wx:if='{{status === 3}}'>
+      <view class='flex show_content_title'>
+        <text class='font_28 color_9'>前往编辑优惠券</text>
+      </view>
+      <view class='flex margin_t_10'>
+        <text class='font_28 color_9'>访问网址：http://x.huan1.cn</text>
+      </view>
+         <view class='flex margin_t_10'>
+        <text class='font_28 color_9'>用户名：180000000</text>
+      </view>
+          <view class='flex margin_t_10'>
+        <text class='font_28 color_9'>初始密码：8888888</text>
+      </view>
+    </view>
+
+    <view class="flex_a input_h margin_t_10">
+      <view class='flex_1 flex'>
+        <text class='font_28 color' bindtap='submit1'>确定</text>
+      </view>
+    </view>
+
+  </view>
+
+</view>
