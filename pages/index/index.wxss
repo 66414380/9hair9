@@ -1,9 +1,10 @@
-
+@import "../../template/navBar/navBar.wxss";
 .start {
   position: absolute;
   right: 30%;
   bottom: 8.5%;
   width: 40%;
   height: 8%;
+
 }
 

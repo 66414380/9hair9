@@ -1,12 +1,12 @@
-<view class='body flex_f'>
+<scroll-view scroll-y class='body_c flex_f height_100'>
 
   <view wx:if='{{status === 1}}'>
-    <text class='font_24 margin_10 color_9'>请按提示填写申请</text>
+    <text class='font_24 margin_10 color_left'>请按提示填写申请</text>
 
     <view class="flex_a input_h ">
       <view class='flex_1'>
         <view class='input_l flex_a'>
-          <text class='font_28 color_9'>*联系人</text>
+          <text class='font_28 color_left'>*联系人</text>
         </view>
       </view>
       <view class='flex_2'>
@@ -19,7 +19,7 @@
     <view class="flex_a input_h margin_t_10">
       <view class='flex_1'>
         <view class='input_l flex_a'>
-          <text class='font_28 color_9'>*餐厅品牌</text>
+          <text class='font_28 color_left'>*餐厅品牌</text>
         </view>
       </view>
       <view class='flex_2'>
@@ -32,7 +32,7 @@
     <view class="flex_a input_h margin_t_10">
       <view class='flex_1'>
         <view class='input_l flex_a'>
-          <text class='font_28 color_9'>*联系电话</text>
+          <text class='font_28 color_left'>*联系电话</text>
         </view>
       </view>
       <view class='flex_2'>
@@ -48,11 +48,11 @@
     <view class="flex_a input_h margin_t_10">
       <view class='flex_1'>
         <view class='input_l margin_r_10 flex_a'>
-          <text class='font_28 color_9'>*验证码</text>
+          <text class='font_28 color_left'>*验证码</text>
         </view>
       </view>
       <view class='flex_1'>
-        <input placeholder='请输入验证码' class='input' value='{{code}}' bindinput="codeHandle" placeholder-class='placeholder'></input>
+        <input placeholder='请输入验证码' class='input' type="number" value='{{code}}' bindinput="codeHandle" placeholder-class='placeholder'></input>
       </view>
       <view class='flex_1'>
       </view>
@@ -100,15 +100,15 @@
   </view>
 
   <view wx:if='{{status === 2 || status === 3}}'>
-    <text class='font_24 margin_10 color_9'>申请状态：<text class='font_24  color_6'>审核中</text></text>
+    <text class='font_24 margin_10 color_left'>申请状态：<text class='font_24  color_6'>审核中</text></text>
     <view class="flex_a input_h">
       <view class='flex_1'>
         <view class='input_l flex_a'>
-          <text class='font_28 color_9'>*餐厅品牌</text>
+          <text class='font_28 color_left'>*餐厅品牌</text>
         </view>
       </view>
       <view class='flex_2 flex'>
-        <text class='placeholder'>大城小厨</text>
+        <text class='placeholder'>{{brand}}</text>
       </view>
       <view class='flex_1'></view>
     </view>
@@ -116,11 +116,11 @@
     <view class="flex_a input_h margin_t_10">
       <view class='flex_1'>
         <view class='input_l flex_a'>
-          <text class='font_28 color_9'>*联系电话</text>
+          <text class='font_28 color_left'>*联系电话</text>
         </view>
       </view>
       <view class='flex_2 flex'>
-        <text class='placeholder'>13888888888</text>
+        <text class='placeholder'>{{phone}}</text>
       </view>
       <view class='flex_1'></view>
     </view>
@@ -128,11 +128,11 @@
     <view class="flex_a input_h margin_t_10">
       <view class='flex_1'>
         <view class='input_l flex_a'>
-          <text class='font_28 color_9'>*联系人</text>
+          <text class='font_28 color_left'>*联系人</text>
         </view>
       </view>
       <view class='flex_2 flex'>
-        <text class='placeholder'>李小明</text>
+        <text class='placeholder'>{{name}}</text>
       </view>
       <view class='flex_1'></view>
     </view>
@@ -159,16 +159,16 @@
 
     <view class="flex_f show_content margin_t_10" wx:if='{{status === 3}}'>
       <view class='flex show_content_title'>
-        <text class='font_28 color_9'>前往编辑优惠券</text>
+        <text class='font_28 placeholder'>前往编辑优惠券</text>
       </view>
       <view class='flex margin_t_10'>
-        <text class='font_28 color_9'>访问网址：http://x.huan1.cn</text>
+        <text class='font_28 placeholder'>访问网址：{{account_info.url}}</text>
       </view>
          <view class='flex margin_t_10'>
-        <text class='font_28 color_9'>用户名：180000000</text>
+        <text class='font_28 placeholder'>用户名：{{account_info.username}}</text>
       </view>
           <view class='flex margin_t_10'>
-        <text class='font_28 color_9'>初始密码：8888888</text>
+        <text class='font_28 placeholder'>初始密码：{{account_info.password}}</text>
       </view>
     </view>
 
@@ -180,4 +180,4 @@
 
   </view>
 
-</view>
+</scroll-view>

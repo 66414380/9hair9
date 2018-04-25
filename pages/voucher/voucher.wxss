@@ -1,6 +1,6 @@
-.body {
+.body_c {
   background-color: #edeff0;
-  height: 100%;
+  
 }
 
 .input_h {
@@ -15,17 +15,23 @@
 .input {
   text-align: center;
   font-size: 28rpx;
+  color: rgb(153, 153, 153);
+  
 }
 
 .placeholder {
   text-align: center;
   font-size: 28rpx;
-  color: #999;
-  font-weight: 100;
+  color: rgb(153, 153, 153);
+  
 }
 
 .codeColor {
-  color: #7bc6ff;
+  color: rgb(0, 186, 255);
+}
+
+.color_left{
+color: rgb(102, 102, 102)
 }
 
 .img {

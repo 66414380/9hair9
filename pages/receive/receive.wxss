@@ -1,3 +1,4 @@
+@import "../../template/navBar/navBar.wxss";
 .show {
   position: absolute;
   right: 30%;

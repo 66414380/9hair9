@@ -1,0 +1,10 @@
+
+.nav_bar{
+  height: 98rpx
+}
+.nav_bar_text{
+  margin-left: 30rpx;
+  color: rgb(44, 158, 218);
+  font-size: 24px;
+  font-weight: 100
+}

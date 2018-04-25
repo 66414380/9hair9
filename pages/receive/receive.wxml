@@ -1,61 +1,70 @@
-<scroll-view class='body'>
-  <image wx:if='{{id === 1}}' style="width: 100%; height: 100%" mode="scaleToFill" src="../../images/man.jpg"></image>
-  <image wx:if='{{id === 2}}' style="width: 100%; height: 100%" mode="scaleToFill" src="../../images/woman.jpg"></image>
+<view class='flex_f height_100'>
 
-  <view class='note' bindtap='noteHandle'></view>
+  <view class='flex_1'>
+    <scroll-view class='body'>
+      <image wx:if='{{id === 1}}' style="width: 100%; height: 100%" mode="scaleToFill" src="../../images/man.jpg"></image>
+      <image wx:if='{{id === 2}}' style="width: 100%; height: 100%" mode="scaleToFill" src="../../images/woman.jpg"></image>
 
-  <view class='show' bindtap='showHandle'></view>
+      <view class='note' bindtap='noteHandle'></view>
 
-  <input placeholder='文字内容不少于4个字符' bindinput="inputHandle" class='input' placeholder-class='placeholder'></input>
+      <view class='show' bindtap='showHandle'></view>
 
-  <import src="../../template/note/note" />
-  <template is="note" data="{{display,height,width,left,top}}" />
+      <input placeholder='文字内容不少于4个字符' bindinput="inputHandle" class='input' placeholder-class='placeholder'></input>
 
-  <!-- 成功分享 -->
-  <view style="display:{{showSuccess}};height: {{height}}px; width: {{width}}px;background-color: #C2C2C2;position: absolute;left: 0;top: 0;z-index: 100;background-color:rgba(0,0,0,.8)">
-    <view style="width:80%;height:80%;position:fixed;z-index:111;top: {{top}}px; left: {{left}}px;">
-      <view class='body'>
-        <image style="width: {{width * 0.8}}px;height:{{height * 0.8}}px" mode="aspectFit" src="../../images/success.png"></image>
-        <view class='resImg'>
-          <image style="width: 100%; height: 100%" mode="scaleToFill" src="{{img_url}}"></image>
+      <import src="../../template/note/note" />
+      <template is="note" data="{{display,height,width,left,top}}" />
+
+      <!-- 成功分享 -->
+      <view style="display:{{showSuccess}};height: {{height}}px; width: {{width}}px;background-color: #C2C2C2;position: absolute;left: 0;top: 0;z-index: 100;background-color:rgba(0,0,0,.8)">
+        <view style="width:80%;height:80%;position:fixed;z-index:111;top: {{top}}px; left: {{left}}px;">
+          <view class='body'>
+            <image style="width: {{width * 0.8}}px;height:{{height * 0.8}}px" mode="aspectFit" src="../../images/success.png"></image>
+            <view class='resImg'>
+              <image style="width: 100%; height: 100%" mode="scaleToFill" src="{{img_url}}"></image>
+            </view>
+            <view class='share' bindtap='shareHandle'></view>
+          </view>
         </view>
-        <view class='share' bindtap='shareHandle'></view>
       </view>
-    </view>
-  </view>
 
-  <!-- 已经分享 -->
-  <view style="display:{{showFail}};height: {{height}}px; width: {{width}}px;background-color: #C2C2C2;position: absolute;left: 0;top: 0;z-index: 100;background-color:rgba(0,0,0,.8)">
-    <view style="width:80%;height:80%;position:fixed;z-index:111;top: {{top}}px; left: {{left}}px;">
-      <view class='body'>
-        <image style="width: {{width * 0.8}}px;height:{{height * 0.8}}px" mode="aspectFit" src="../../images/fail.png"></image>
-        <view class='resImg'>
-          <image style="width: 100%; height: 100%" mode="scaleToFill" src="{{img_url}}"></image>
+      <!-- 已经分享 -->
+      <view style="display:{{showFail}};height: {{height}}px; width: {{width}}px;background-color: #C2C2C2;position: absolute;left: 0;top: 0;z-index: 100;background-color:rgba(0,0,0,.8)">
+        <view style="width:80%;height:80%;position:fixed;z-index:111;top: {{top}}px; left: {{left}}px;">
+          <view class='body'>
+            <image style="width: {{width * 0.8}}px;height:{{height * 0.8}}px" mode="aspectFit" src="../../images/fail.png"></image>
+            <view class='resImg'>
+              <image style="width: 100%; height: 100%" mode="scaleToFill" src="{{img_url}}"></image>
+            </view>
+            <view class='share' bindtap='shareHandle'></view>
+          </view>
         </view>
-        <view class='share' bindtap='shareHandle'></view>
       </view>
-    </view>
+
+      <!-- 分享朋友圈 -->
+      <view style="display:{{share}};height: {{height}}px; width: {{width}}px;background-color: #C2C2C2;position: absolute;left: 0;top: 0;z-index: 100;background-color:rgba(0,0,0,.8)">
+        <view style="width:80%;height:100%;position:fixed;z-index:111;top: 0px; left: {{left}}px;">
+          <view class='body flex_f flex_sb'>
+            <image style="width: {{width}}px;height:{{height* 0.17}}px" mode="aspectFit" src="../../images/shareTop.png"></image>
+
+            <view class='share_img'>
+
+              <image style="width: 100%; height: 100%" mode="aspectFit" src="{{img_share}}"></image>
+            </view>
+
+            <image style="width: {{width * 0.8}}px;height:{{height* 0.15}}px" mode="aspectFit" src="../../images/shareFoot.png"></image>
+
+            <view class='saveImg' bindtap='saveHandle'></view>
+            <view class='sandButton' bindtap='sandImg'></view>
+            <!-- border: none;需要写在style才生效 -->
+
+            <!-- <button plain='true' style='border: none' class='sandButton' open-type='share'></button> -->
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+
   </view>
 
-  <!-- 分享朋友圈 -->
-  <view style="display:{{share}};height: {{height}}px; width: {{width}}px;background-color: #C2C2C2;position: absolute;left: 0;top: 0;z-index: 100;background-color:rgba(0,0,0,.8)">
-    <view style="width:80%;height:100%;position:fixed;z-index:111;top: 0px; left: {{left}}px;">
-      <view class='body flex_f flex_sb'>
-        <image style="width: {{width}}px;height:{{height* 0.17}}px" mode="aspectFit" src="../../images/shareTop.png"></image>
-
-      <view class='share_img'>
-
-        <image style="width: 100%; height: 100%" mode="aspectFit" src="{{img_share}}"></image>
-      </view>
-
-        <image style="width: {{width * 0.8}}px;height:{{height* 0.15}}px" mode="aspectFit" src="../../images/shareFoot.png"></image>
-
-        <view class='saveImg' bindtap='saveHandle'></view>
-        <view class='sandButton' bindtap='sandImg'></view>
-        <!-- border: none;需要写在style才生效 -->
-       
-        <!-- <button plain='true' style='border: none' class='sandButton' open-type='share'></button> -->
-      </view>
-    </view>
-  </view>
-</scroll-view>
+  <import src="../../template/navBar/navBar" />
+  <template is="navBar" />
+</view>

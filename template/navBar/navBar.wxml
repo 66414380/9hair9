@@ -1,0 +1,13 @@
+<template name="navBar">
+  <view class='flex width_100 nav_bar'>
+    <navigator url="../voucher/voucher">
+      <view class='flex_1 flex height_100 '>
+        <image style="width:68rpx;height:60rpx;" src="../../images/cart.png"></image>
+        <text class='nav_bar_text'>我要卡券</text>
+      </view>
+    </navigator>
+    <!-- <view class='flex_1 flex'>
+    b
+  </view> -->
+  </view>
+</template>
