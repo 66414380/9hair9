@@ -6,8 +6,8 @@ Page({
     height: '',
     left: '',
     top: '',
-    show:[false,false],
-    id:'',
+    
+    singleId:0,
     notes_background_url:'',
     notes_button:'',
     notes_info:'',
@@ -15,15 +15,33 @@ Page({
     obj:{}
   },
   selectHandle:function(e){
-    console.log(e.currentTarget.dataset.id)
-    switch (e.currentTarget.dataset.id){
-      case '1':
-        this.setData({ show: [true, false], id:1})
-      break;
-      case '2':
-        this.setData({ show: [false, true], id: 2})
-        break;
+    let obj = this.data.obj
+    obj.option.forEach((item)=>{
+      item.select = false
+    })
+    obj.option[e.currentTarget.dataset.id].select = true
+    this.setData({obj})
+  },
+  selectHandleMuli:function(e){
+    let obj = this.data.obj, list = []
+
+
+    
+    obj.option[e.currentTarget.dataset.id].select = !obj.option[e.currentTarget.dataset.id].select
+    obj.option.forEach((item) => {
+      if (item.select === true) {
+        list.push(1)
+      }
+    })
+    this.setData({ obj })
+    this.setData({ singleId: list.length })
+    console.log(this.data.singleId)
+    if (e.currentTarget.dataset.num < this.data.singleId){
+      console.log('no')
+      
     }
+  
+
   },
   understandHandle: function () {
     this.setData({ display: 'none' })
@@ -61,6 +79,14 @@ Page({
   next(list){
    let obj =  list.shift()
     console.log(obj)
+    this.setData({obj})
+    if (obj.subject_type === 2){
+
+    }
+
+
+
+
   },
 
   onLoad: function (options) {
@@ -69,6 +95,12 @@ Page({
 
     app.xhr('POST', '?controller=activity&action=getProblem', { activityId: 24 }, '', (res) => {
       if (res.data.errcode === 0) {
+        res.data.data.forEach((item)=>{
+          item.option.forEach((item1)=>{
+            item1.select = false
+          })
+        })
+
         this.setData({
          list:res.data.data
         })

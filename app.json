@@ -1,8 +1,8 @@
 {
   "pages":[
-    
-    "pages/index/index",
     "pages/select/select",
+    "pages/index/index",
+   
     "pages/voucher/voucher",
     "pages/receive/receive"
   ],

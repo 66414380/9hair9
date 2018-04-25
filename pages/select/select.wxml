@@ -1,17 +1,47 @@
 <view class='flex_f height_100'>
   <view class='flex_1'>
     <scroll-view class='body'>
-      <image style="width: 100%; height: 100%" mode="scaleToFill" src="../../images/3.jpg"></image>
+      <image style="width: 100%; height: 100%" mode="scaleToFill" src="{{obj.subject_background_url}}"></image>
       <view class='note' bindtap='noteHandle'></view>
       <view class='ok flex'>
         <image wx:if="{{id !== ''}}" style="width: 55%; height: 55%" mode="aspectFit" src="../../images/ok.png"></image>
       </view>
       <view class='next' bindtap='nextHandle'></view>
 
-      <view class='man' bindtap='selectHandle' data-id='1'></view>
-      <view class='showMan' wx:if="{{show[1]}}" bindtap='selectHandle' data-id='1'></view>
-      <view class='woman' bindtap='selectHandle' data-id='2'></view>
-      <view class='showWoman' wx:if="{{show[0]}}" bindtap='selectHandle' data-id='2'></view>
+
+      <view class='select_back flex' wx:if="{{obj.subject_type === 2 && (obj.option.length === 2 || obj.option.length === 3)}}">
+        <block wx:for="{{obj.option}}" wx:for-index="i" wx:key="i">
+          <view class='flex_1 flex height_100'>
+            <image style="width: 100%; height: 100%;filter:{{item.select === true ? 'brightness(50%)':'brightness(100%)'}}" src="{{item.img}}" bindtap='selectHandle' data-id='{{i}}'></image>
+          </view>
+        </block>
+      </view>
+
+      <view class='select_back flex_r f_f' wx:if="{{obj.subject_type === 2 && obj.option.length === 4 }}">
+        <block wx:for="{{obj.option}}" wx:for-index="i" wx:key="i">
+          <view style='width:50%;height:50%'>
+            <image style="width: 100%; height: 100%;filter:{{item.select === true ? 'brightness(50%)':'brightness(100%)'}}" src="{{item.img}}" bindtap='selectHandle' data-id='{{i}}'></image>
+          </view>
+        </block>
+      </view>
+
+      <view class='select_back' wx:if="{{obj.subject_type === 2 && obj.option.length > 4 }}">
+        <block wx:for="{{obj.option}}" wx:for-index="i" wx:key="i">
+          <view style='width:33.33%;height:33.33%;float:left;'>
+            <image style="width: 100%; height: 100%;filter:{{item.select === true ? 'brightness(50%)':'brightness(100%)'}}" src="{{item.img}}" bindtap='selectHandle' data-id='{{i}}'></image>
+          </view>
+        </block>
+      </view>
+
+      <view class='select_back flex' wx:if="{{obj.subject_type === 3 && (obj.option.length === 2 || obj.option.length === 3)}}">
+        <block wx:for="{{obj.option}}" wx:for-index="i" wx:key="i">
+          <view class='flex_1 flex height_100'>
+            <image style="width: 100%; height: 100%;filter:{{item.select === true ? 'brightness(50%)':'brightness(100%)'}}" src="{{item.img}}" bindtap='selectHandleMuli' data-id='{{i}}' data-num='{{obj.select_num}}'></image>
+          </view>
+        </block>
+      </view>
+
+   
 
       <import src="../../template/note/note" />
       <template is="note" data="{{display,height,width,left,top,notes_background_url,notes_button,notes_info}}" />
