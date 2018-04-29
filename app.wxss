@@ -17,10 +17,13 @@ page{height: 100%}
 }
 .notes_info{
 position:absolute;
-left:9%;
+left:5%;
 top:19%;
-width:82%;
+width:89%;
 height:55%;
+}
+.textarea{
+  font-size: 30rpx
 }
 .understand {
   position: absolute;

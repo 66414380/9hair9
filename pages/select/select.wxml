@@ -1,53 +1,125 @@
 <view class='flex_f height_100'>
   <view class='flex_1'>
     <scroll-view class='body'>
-      <image style="width: 100%; height: 100%" mode="scaleToFill" src="{{obj.subject_background_url}}"></image>
-      <view class='note' bindtap='noteHandle'></view>
-      <view class='ok flex'>
-        <image wx:if="{{id !== ''}}" style="width: 55%; height: 55%" mode="aspectFit" src="../../images/ok.png"></image>
+      <image class='width_100 height_100' mode="scaleToFill" src="{{obj.subject_background_url}}"></image>
+      <view class='note' bindtap='noteHandle'>
+        <image class='width_100 height_100' src="{{home_notes_url}}"></image>
       </view>
-      <view class='next' bindtap='nextHandle'></view>
+      <view class='ok flex'>
+        <image wx:if="{{ok == true}}" style="width: 55%; height: 55%" mode="aspectFit" src="../../images/ok.png"></image>
+      </view>
+      <view class='next' bindtap='nextHandle' data-obj='{{obj}}'>
+      <image class='width_100 height_100'  src="{{obj.subject_button}}"></image>
+      </view>
 
-
+      <!-- 单选 23-->
       <view class='select_back flex' wx:if="{{obj.subject_type === 2 && (obj.option.length === 2 || obj.option.length === 3)}}">
         <block wx:for="{{obj.option}}" wx:for-index="i" wx:key="i">
           <view class='flex_1 flex height_100'>
-            <image style="width: 100%; height: 100%;filter:{{item.select === true ? 'brightness(50%)':'brightness(100%)'}}" src="{{item.img}}" bindtap='selectHandle' data-id='{{i}}'></image>
+            <image class='width_100 height_100' style="filter:{{item.select === true ? 'brightness(50%)':'brightness(100%)'}}" src="{{item.img}}" bindtap='selectHandle' data-id='{{i}}'></image>
           </view>
         </block>
       </view>
-
+      <!-- 单选 4-->
       <view class='select_back flex_r f_f' wx:if="{{obj.subject_type === 2 && obj.option.length === 4 }}">
         <block wx:for="{{obj.option}}" wx:for-index="i" wx:key="i">
           <view style='width:50%;height:50%'>
-            <image style="width: 100%; height: 100%;filter:{{item.select === true ? 'brightness(50%)':'brightness(100%)'}}" src="{{item.img}}" bindtap='selectHandle' data-id='{{i}}'></image>
+            <image class='width_100 height_100' style="filter:{{item.select === true ? 'brightness(50%)':'brightness(100%)'}}" src="{{item.img}}" bindtap='selectHandle' data-id='{{i}}'></image>
           </view>
         </block>
       </view>
-
+      <!-- 单选 4以上-->
       <view class='select_back' wx:if="{{obj.subject_type === 2 && obj.option.length > 4 }}">
         <block wx:for="{{obj.option}}" wx:for-index="i" wx:key="i">
           <view style='width:33.33%;height:33.33%;float:left;'>
-            <image style="width: 100%; height: 100%;filter:{{item.select === true ? 'brightness(50%)':'brightness(100%)'}}" src="{{item.img}}" bindtap='selectHandle' data-id='{{i}}'></image>
+            <image class='width_100 height_100' style="filter:{{item.select === true ? 'brightness(50%)':'brightness(100%)'}}" src="{{item.img}}" bindtap='selectHandle' data-id='{{i}}'></image>
           </view>
         </block>
       </view>
-
+      <!-- 多选 23-->
       <view class='select_back flex' wx:if="{{obj.subject_type === 3 && (obj.option.length === 2 || obj.option.length === 3)}}">
         <block wx:for="{{obj.option}}" wx:for-index="i" wx:key="i">
           <view class='flex_1 flex height_100'>
-            <image style="width: 100%; height: 100%;filter:{{item.select === true ? 'brightness(50%)':'brightness(100%)'}}" src="{{item.img}}" bindtap='selectHandleMuli' data-id='{{i}}' data-num='{{obj.select_num}}'></image>
+            <image class='width_100 height_100' style="filter:{{item.select === true ? 'brightness(50%)':'brightness(100%)'}}" src="{{item.img}}" bindtap='selectHandleMuli' data-id='{{i}}' data-num='{{obj.select_num}}'></image>
           </view>
         </block>
       </view>
 
-   
+      <!-- 多选 4-->
+      <view class='select_back flex_r f_f' wx:if="{{obj.subject_type === 3 && obj.option.length === 4 }}">
+        <block wx:for="{{obj.option}}" wx:for-index="i" wx:key="i">
+          <view style='width:50%;height:50%'>
+            <image class='width_100 height_100' style="filter:{{item.select === true ? 'brightness(50%)':'brightness(100%)'}}" src="{{item.img}}" bindtap='selectHandleMuli' data-id='{{i}}' data-num='{{obj.select_num}}'></image>
+          </view>
+        </block>
+      </view>
+      <!-- 多选 4以上-->
+      <view class='select_back' wx:if="{{obj.subject_type === 3 && obj.option.length > 4 }}">
+        <block wx:for="{{obj.option}}" wx:for-index="i" wx:key="i">
+          <view style='width:33.33%;height:33.33%;float:left;'>
+            <image class='width_100 height_100' style="filter:{{item.select === true ? 'brightness(50%)':'brightness(100%)'}}" src="{{item.img}}" bindtap='selectHandleMuli' data-id='{{i}}' data-num='{{obj.select_num}}'></image>
+          </view>
+        </block>
+      </view>
+      <!-- 填空 -->
+     <view class='subject_problem' wx:if="{{obj.subject_type === 1}}">
+        <image  class='width_100 height_100'  src="{{obj.subject_problem}}">
+          <input placeholder='{{placeholder}}' value='{{inputValue}}'  bindinput="inputHandle" class='input' placeholder-class='placeholder'></input>
+        </image>
+     </view>
+      <!-- 选择 -->
+       <view class='subject_select' wx:if="{{obj.subject_type !== 1}}">
+        <image  class='width_100 height_100'  src="{{obj.subject_problem}}">
+        </image>
+     </view>
+
+
+           <!-- 成功分享 -->
+      <view style="display:{{showSuccess}};height: {{height}}px; width: {{width}}px;background-color: #C2C2C2;position: absolute;left: 0;top: 0;z-index: 100;background-color:rgba(0,0,0,.8)">
+        <view style="width:80%;height:80%;position:fixed;z-index:111;top: {{top}}px; left: {{left}}px;">
+          <view class='body'>
+          <view class='success'>
+            <image class='width_100 height_100' src="{{receive_success_url}}"></image>
+          </view>
+            <view class='resImg'>
+              <image class='width_100 height_100'  mode="scaleToFill" src="{{receive_info_url}}"></image>
+            </view>
+            <view class='share' bindtap='shareHandle'>
+            <image class='width_100 height_100' src="{{share_button}}"></image>
+            </view>
+          </view>
+        </view>
+      </view>
+
+
+      <!-- 分享朋友圈 -->
+      <view style="display:{{share}};height: {{height}}px; width: {{width}}px;background-color: #C2C2C2;position: absolute;left: 0;top: 0;z-index: 100;background-color:rgba(0,0,0,.8)">
+        <view style="width:80%;height:90%;position:fixed;z-index:111;top: 0px; left: {{left}}px;">
+          <view class='body flex_f flex_sb'>
+            <view class='element1'>
+              <image class='width_100 height_100' mode="aspectFit" src="{{element1}}"></image>
+            </view>
+            <view class='share_img'>
+              <image class='width_100 height_100' mode="aspectFit" src="{{element2}}"></image>
+            </view>
+
+            <view class='saveImg' bindtap='saveHandle'>
+              <image class='width_100 height_100' src="{{element3}}"></image>
+            </view>
+            <view class='sandButton' bindtap='sandImg'>
+              <image class='width_100 height_100' src="{{element4}}"></image>
+            </view>
+
+          </view>
+        </view>
+      </view>
+     
 
       <import src="../../template/note/note" />
       <template is="note" data="{{display,height,width,left,top,notes_background_url,notes_button,notes_info}}" />
     </scroll-view>
   </view>
-  <import src="../../template/navBar/navBar" />
-  <template is="navBar" />
+   <import src="../../template/navBar/navBar" />
+  <template is="navBar" /> 
 
 </view>

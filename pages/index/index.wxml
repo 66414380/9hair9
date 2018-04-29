@@ -18,7 +18,7 @@
 
   </view>
 
-  <import src="../../template/navBar/navBar" />
-  <template is="navBar" />
+   <import src="../../template/navBar/navBar" />
+  <template is="navBar" /> 
 
 </view>

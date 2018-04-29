@@ -78,6 +78,12 @@ Page({
             },2500)
           }
         })
+      } else{
+        wx.showToast({
+          title: res.data.errmsg,
+          icon: 'none',
+          duration: 2000
+        })
       }
     
     })
@@ -236,6 +242,7 @@ Page({
           })
         }
       }
+      
       if (res.data.errcode === 80001){
         this.setData({ status:1})
       }

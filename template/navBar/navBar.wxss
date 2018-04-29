@@ -3,8 +3,8 @@
   height: 98rpx
 }
 .nav_bar_text{
-  margin-left: 30rpx;
+  margin-left: 20rpx;
   color: rgb(44, 158, 218);
-  font-size: 24px;
+  font-size: 14px;
   font-weight: 100
 }

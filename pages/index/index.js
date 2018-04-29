@@ -23,7 +23,7 @@ Page({
   },
   noteHandle:function(){
     app.xhr('POST', '?controller=activity&action=getActivityNote', {
-    activityId: 24
+      activityId: storage.get_s('activityId')
     }, '', (res) => {
       if (res.data.errcode === 0) {
         this.setData({
@@ -42,7 +42,7 @@ Page({
 
     app.xhr('POST', '?controller=activity&action=checkActivity', {
       userId: storage.get_s('userId'),
-      activityId:24
+      activityId: storage.get_s('activityId')
     }, '', (res) => {
       if (res.data.errcode === 0) {
         wx.navigateTo({
@@ -78,9 +78,22 @@ Page({
       }
     });
   },
+  toMiniProgram:function(){
+    wx.navigateToMiniProgram({
+      appId: 'wx3d7c7e70e4850853',
+      path: 'pages/purchaseList/purchaseList',
+    })
+  },
   onLoad: function (options) {
     let scene = decodeURIComponent(options.scene)
+    console.log(options.scene)
     console.log(scene)
+    if (scene === undefined){
+      storage.set('activityId', options.scene)
+    }else{
+      storage.set('activityId', scene)
+    }
+    
 
     let res = wx.getSystemInfoSync()
     this.setData({ width: res.windowWidth, height: res.windowHeight, left: res.windowWidth / 2 - res.windowWidth * 0.8 / 2, top: res.windowHeight / 2 - res.windowHeight *0.8 / 2 })
@@ -89,13 +102,16 @@ Page({
       this.login()
     }
 
-    app.xhr('POST', '?controller=activity&action=activityInit', { activityId: 24 }, '', (res) => { 
+    app.xhr('POST', '?controller=activity&action=activityInit', { activityId: storage.get_s('activityId') }, '', (res) => { 
       if (res.data.errcode === 0) {
         this.setData({
           home_notes_url: res.data.data.home_notes_url, 
           home_background_url: res.data.data.home_background_url, 
           home_start_url: res.data.data.home_start_url, 
         })
+
+        storage.set('home_notes_url', res.data.data.home_notes_url)
+        storage.set('myPageUrl', res.data.data.myPageUrl)
       }
 
     })

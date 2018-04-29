@@ -1,13 +1,14 @@
 <template name="navBar">
   <view class='flex width_100 nav_bar'>
-    <navigator url="../voucher/voucher">
-      <view class='flex_1 flex height_100 '>
-        <image style="width:68rpx;height:60rpx;" src="../../images/cart.png"></image>
-        <text class='nav_bar_text'>我要卡券</text>
+    <!-- <view class='flex_1 flex height_100' bindtap='toMiniProgram'>
+      <image style="width:40rpx;height:40rpx;" src="../../images/time.png"></image>
+      <text class='nav_bar_text'>消费记录</text>
+    </view> -->
+    <navigator hover-class="none" url="../myVoucher/myVoucher" class='flex_1'>
+      <view class=' flex height_100 '>
+        <image style="width:40rpx;height:40rpx;" src="../../images/cart.png"></image>
+        <text class='nav_bar_text'>我的卡券</text>
       </view>
     </navigator>
-    <!-- <view class='flex_1 flex'>
-    b
-  </view> -->
   </view>
 </template>
