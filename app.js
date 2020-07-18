@@ -25,7 +25,7 @@ App({
     })
   },
   onLaunch: function () {
-    console.log('tag v1')
+    console.log('tag v1.0')
   },
 
   onShow: function () {
