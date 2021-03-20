@@ -26,6 +26,7 @@ App({
   },
   onLaunch: function () {
     console.log('tag v2.22')
+    console.log('更新了masterv1')
   },
 
   onShow: function () {
